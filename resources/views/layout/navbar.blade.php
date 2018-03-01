@@ -31,7 +31,7 @@
             @if (auth()->check())
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-user"></i> {{ auth()->user()->name }}
+                    <i class="fas fa-user"></i> {{ auth()->user()->username }}
                 </a>
             </li>
             <li class="nav-item">
