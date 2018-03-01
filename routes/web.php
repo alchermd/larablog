@@ -3,6 +3,8 @@
 Route::get('/', 'PagesController@home');
 
 Route::get('/posts', 'PostController@index');
+Route::get('/posts/new', 'PostController@create');
+Route::post('/posts', 'PostController@store');
 
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
