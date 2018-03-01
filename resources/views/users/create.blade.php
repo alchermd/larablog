@@ -12,6 +12,8 @@
                 <hr>
 
                 <form action="/register" method="POST">
+                    @csrf
+
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" class="form-control" required>
