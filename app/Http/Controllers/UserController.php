@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -34,7 +35,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'username' => 'required|unique:users|min:5|max:15',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:5|max:15',
+        ]);
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        $user = User::create($validatedData);
+        auth()->login($user);
+
+        return redirect('/posts');
     }
 
     /**
