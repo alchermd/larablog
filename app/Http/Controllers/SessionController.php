@@ -23,7 +23,7 @@ class SessionController extends Controller
      */
     public function create()
     {
-        //
+        return view('sessions.create');
     }
 
     /**
@@ -34,7 +34,18 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt($validatedData)) {
+            return redirect('/posts');
+        }
+
+        return redirect()
+            ->back()
+            ->withInput();
     }
 
     /**
