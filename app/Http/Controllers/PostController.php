@@ -37,7 +37,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|unique:posts|min:5|max:150',
+            'body' => 'required|unique:posts|min:10|max:3000',
+        ]);
+
+        auth()->user()->posts()->create($validatedData);
+
+        return redirect('/posts');
     }
 
     /**
