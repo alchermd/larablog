@@ -9,6 +9,8 @@ Route::post('/posts', 'PostController@store');
 
 Route::post('/posts/{post}/comments', 'CommentController@store');
 
+Route::get('/posts/tag/{tag}', 'TagController@index');
+
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
 
