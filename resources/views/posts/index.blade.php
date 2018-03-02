@@ -22,9 +22,11 @@
                         by {{ $post->user->username }}, {{ $post->created_at->toFormattedDateString() }}
                         
                         @foreach ($post->tags as $tag)
-                        <span class="badge badge-pill badge-primary">
-                            {{ $tag->name }}
-                        </span>
+                        <a href="/posts/tag/{{ $tag->name}}">
+                            <span class="badge badge-pill badge-primary">
+                                {{ $tag->name }}
+                            </span>
+                        </a>
                         @endforeach
                     </small>
                 @endforeach
