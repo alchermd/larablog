@@ -50,6 +50,9 @@ class UserController extends Controller
         $user = User::create($validatedData);
         auth()->login($user);
 
+        session()->flash('category', 'success');
+        session()->flash('message', 'You are now registered. Have fun!');
+
         return redirect('/posts');
     }
 
