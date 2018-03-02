@@ -50,7 +50,7 @@ class SessionController extends Controller
 
         return redirect()
             ->back()
-            ->withInput();
+            ->withErrors(['Invalid credentials']);
     }
 
     /**
