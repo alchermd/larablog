@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Mail\Welcome;
 
 class UserController extends Controller
 {
@@ -49,6 +50,8 @@ class UserController extends Controller
 
         $user = User::create($validatedData);
         auth()->login($user);
+
+        \Mail::to($user)->send(new Welcome);
 
         session()->flash('message', [
             'category' => 'success',
