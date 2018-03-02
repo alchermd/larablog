@@ -10,7 +10,10 @@
                 <h1 class="text-center">Latest Posts</h1>
 
                 <hr>
-
+                
+                @if ($posts->isEmpty())
+                <p>No posts yet.</p>
+                @else
                 @foreach ($posts as $post)
                     <h2>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
@@ -19,6 +22,7 @@
                         </small>
                     </h2>
                 @endforeach
+                @endif
             </div>
         </div>
 
