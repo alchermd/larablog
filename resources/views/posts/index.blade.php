@@ -17,10 +17,16 @@
                 @foreach ($posts as $post)
                     <h2>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                        <small class="text-muted">
-                            by {{ $post->user->username }}, {{ $post->created_at->toFormattedDateString() }}
-                        </small>
                     </h2>
+                    <small class="text-muted">
+                        by {{ $post->user->username }}, {{ $post->created_at->toFormattedDateString() }}
+                        
+                        @foreach ($post->tags as $tag)
+                        <span class="badge badge-pill badge-primary">
+                            {{ $tag->name }}
+                        </span>
+                        @endforeach
+                    </small>
                 @endforeach
                 @endif
             </div>
