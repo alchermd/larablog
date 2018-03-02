@@ -49,8 +49,10 @@ class PostController extends Controller
 
         auth()->user()->posts()->create($validatedData);
 
-        session()->flash('category', 'success');
-        session()->flash('message', 'Post successfully published.');
+        session()->flash('message', [
+            'category' => 'success',
+            'body' => 'Post successfuly published.'
+        ]);
 
         return redirect('/posts');
     }

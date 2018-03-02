@@ -1,6 +1,6 @@
-@if (($message = session('message')) && ($category = session('category')))
-<div class="alert-flash alert alert-{{ $category }} alert-dismissible fade show" role="alert">
-    <strong>{{ $message }}</strong>
+@if ($message = session('message'))
+<div class="alert-flash alert alert-{{ $message['category'] }} alert-dismissible fade show" role="alert">
+    <strong>{{  $message['body']  }}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
