@@ -19,7 +19,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->sortByDesc('created_at');
+        $posts = Post::latest();
+
+        if ($month = request('month')) {
+            $posts->whereMonth('created_at', $month);
+        }
+
+        if ($year = request('year')) {
+            $posts->whereYear('created_at', $year);
+        }
+
+        $posts = $posts->get();
 
         return view('posts.index')->with(compact('posts'));
     }
