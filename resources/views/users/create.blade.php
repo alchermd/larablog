@@ -11,6 +11,8 @@
 
                 <hr>
 
+                @include ('layout.errors')
+
                 <form action="/register" method="POST">
                     @csrf
 

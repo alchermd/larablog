@@ -23,6 +23,8 @@
                 <div class="jumbotron">
                     <h3><label for="body">Comments</label></h3>
 
+                    @include ('layout.errors')
+
                     @if (auth()->check())
                     <form action="/posts/{{ $post->id }}/comments" method="POST">
                         @csrf

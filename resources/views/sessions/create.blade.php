@@ -10,7 +10,9 @@
                 <h1 class="text-center">Login to your Larablog Account</h1>
 
                 <hr>
-        
+                
+                @include ('layout.errors')
+
                 <form action="/login" method="POST">
                     @csrf
         

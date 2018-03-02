@@ -10,7 +10,9 @@
                 <h1 class="text-center">Submit a new Post</h1>
 
                 <hr>
-        
+
+                @include ('layout.errors')
+
                 <form action="/posts" method="POST">
                     @csrf
         
