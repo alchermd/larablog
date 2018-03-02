@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Mail\NewComment;
 
 class CommentController extends Controller
 {
@@ -46,7 +47,9 @@ class CommentController extends Controller
         ]);
         $validatedData['post_id'] = $post->id;
 
-        auth()->user()->comments()->create($validatedData);
+        $comment = auth()->user()->comments()->create($validatedData);
+
+        \Mail::to($post->user)->send(new NewComment($comment));
 
         session()->flash('message', [
             'category' => 'success',
