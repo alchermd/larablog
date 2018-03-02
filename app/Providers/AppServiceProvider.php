@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 use App\Post;
+use App\Tag;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
             )->groupBy('year', 'month')->get()->toArray();
 
             return $view->with(compact('archives'));
+        });
+
+        view()->composer('layout.tags', function (View $view) {
+            $tags = Tag::all();
+
+            return $view->with(compact('tags'));
         });
     }
 
