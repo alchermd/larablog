@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -41,7 +42,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create')->with(compact('tags'));
     }
 
     /**
@@ -55,9 +57,11 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|unique:posts|min:5|max:150',
             'body' => 'required|unique:posts|min:10|max:3000',
+            'tags' => 'required|exists:tags,id',
         ]);
 
-        auth()->user()->posts()->create($validatedData);
+        $p = auth()->user()->posts()->create($validatedData);
+        $p->tags()->attach($validatedData['tags']);
 
         session()->flash('message', [
             'category' => 'success',
