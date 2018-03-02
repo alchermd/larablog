@@ -45,6 +45,9 @@ class SessionController extends Controller
         ]);
 
         if (auth()->attempt($validatedData)) {
+            session()->flash('category', 'success');
+            session()->flash('message', 'You are now logged in!');
+
             return redirect('/posts');
         }
 
@@ -95,6 +98,9 @@ class SessionController extends Controller
     public function destroy()
     {
         auth()->logout();
+
+        session()->flash('category', 'danger');
+        session()->flash('message', 'You are now logged out!');
 
         return back();
     }
