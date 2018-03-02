@@ -25,6 +25,15 @@
                         <label for="body">Body</label>
                         <textarea name="body" id="body" rows="7" class="form-control">{{ old('body') }}</textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="tags">Tag</label>
+                        <select name="tags" id="tags" class="custom-select" required>
+                            @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
         
                     <div class="form-group">
                         <input type="submit" value="Publish" class="btn btn-primary">
