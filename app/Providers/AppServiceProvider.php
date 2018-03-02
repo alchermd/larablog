@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('layout.tags', function (View $view) {
-            $tags = Tag::all();
+            $tags = Tag::has('posts')->get();
 
             return $view->with(compact('tags'));
         });
