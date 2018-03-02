@@ -3,8 +3,9 @@
 Route::get('/', 'PagesController@home')->name('home');
 
 Route::get('/posts', 'PostController@index');
-Route::get('/posts/new', 'PostController@create');
+Route::get('/posts/{post}', 'PostController@show');
 Route::post('/posts', 'PostController@store');
+Route::get('/posts/new', 'PostController@create');
 
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
