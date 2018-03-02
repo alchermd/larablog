@@ -48,6 +48,9 @@ class CommentController extends Controller
 
         auth()->user()->comments()->create($validatedData);
 
+        session()->flash('category', 'success');
+        session()->flash('message', 'Comment successfully added.');
+
         return back();
     }
 
