@@ -47,7 +47,7 @@
                     <p>No comments yet.</p>
                     @else
                     <ul class="list-group">
-                    @foreach ($post->comments as $comment)
+                    @foreach ($post->comments->sortByDesc('created_at') as $comment)
                         <li class="list-group-item">
                             <small>{{ $comment->user->username}}, {{ $comment->created_at->diffForHumans() }}</small> <br>
                             {{ $comment->body }}
