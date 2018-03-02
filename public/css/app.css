@@ -10379,3 +10379,10 @@ pre {
   margin-bottom: 15px;
 }
 
+.alert-flash {
+  position: absolute;
+  z-index: 1;
+  bottom: 30px;
+  left: -10px;
+}
+
