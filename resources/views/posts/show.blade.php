@@ -21,21 +21,29 @@
                 <hr>
 
                 <div class="jumbotron">
+                    <h3><label for="body">Comments</label></h3>
+
+                    @if (auth()->check())
                     <form action="/posts/{{ $post->id }}/comments" method="POST">
                         @csrf
 
                         <div class="form-group">
-                            <h3><label for="body">Comments</label></h3>
-                            <textarea name="body" id="body" rows="5" class="form-control" value="{{ old('body') }}" placeholder="What do you think?"></textarea>
+                            <textarea name="body" id="body" rows="5" class="form-control" value="{{ old('body') }}" placeholder="What do you think?" required></textarea>
                         </div>
 
                         <div class="form-group">
                             <input type="submit" value="Add Comment" class="btn btn-primary">
                         </div>
                     </form>
+                    @else
+                    <p>Please <a href="/login">login</a> to add your comment.</p>
+                    @endif
 
                     <hr>
 
+                    @if ($post->comments->isEmpty())
+                    <p>No comments yet.</p>
+                    @else
                     <ul class="list-group">
                     @foreach ($post->comments as $comment)
                         <li class="list-group-item">
@@ -44,6 +52,7 @@
                         </li>
                     @endforeach
                     </ul>
+                    @endif
                 </div>
             </div>
         </div>
