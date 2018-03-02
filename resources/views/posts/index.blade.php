@@ -35,6 +35,7 @@
         </div>
 
         <div class="col col-md-4">
+            @include ('layout.tags')
             @include ('layout.archives')
         </div>
     </div>
