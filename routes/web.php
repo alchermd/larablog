@@ -13,6 +13,7 @@ Route::get('/posts/tag/{tag}', 'TagController@index');
 
 Route::get('/register', 'UserController@create');
 Route::post('/register', 'UserController@store');
+Route::get('/dashboard', 'UserController@show');
 
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/login', 'SessionController@store');
