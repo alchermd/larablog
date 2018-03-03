@@ -57,12 +57,14 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|unique:posts|min:5|max:150',
             'body' => 'required|unique:posts|min:10|max:3000',
-            'tags' => 'required|exists:tags,id',
+            'tags' => 'exists:tags,id',
         ]);
 
         $p = auth()->user()->posts()->create($validatedData);
-        $p->tags()->attach($validatedData['tags']);
 
+        if ($tag = $validatedData['tags']) {
+            $p->tags()->attach($tag);
+        }
         session()->flash('message', [
             'category' => 'success',
             'body' => 'Post successfuly published.'
