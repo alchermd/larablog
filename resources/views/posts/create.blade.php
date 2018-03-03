@@ -28,7 +28,7 @@
 
                     <div class="form-group">
                         <label for="tags">Tag</label>
-                        <select name="tags" id="tags" class="custom-select" required>
+                        <select name="tags" id="tags" class="custom-select">
                             @foreach ($tags as $tag)
                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
