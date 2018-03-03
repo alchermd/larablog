@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth')->only(['show']);
     }
 
     /**
@@ -64,12 +64,14 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $user = auth()->user();
+        $posts = $user->posts;
+
+        return view('users.show')->with(compact('user', 'posts'));
     }
 
     /**
