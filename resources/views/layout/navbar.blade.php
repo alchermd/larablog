@@ -30,7 +30,7 @@
         <ul class="navbar-nav">
             @if (auth()->check())
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/dashboard" class="nav-link">
                     <i class="fas fa-user"></i> {{ auth()->user()->username }}
                 </a>
             </li>
