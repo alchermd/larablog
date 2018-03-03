@@ -5,6 +5,9 @@
 
     <hr>
 
+    @if (! $archives)
+    <p>No archives yet.</p>
+    @else
     <ul class="list-group text-center">
         @foreach ($archives as $stats)
         <li class="list-group-item">
@@ -17,4 +20,5 @@
         </li>
         @endforeach
     </ul>
+    @endif
 </div>
