@@ -50,7 +50,7 @@ class SessionController extends Controller
                 'body' => 'You are now logged in!'
             ]);
 
-            return redirect('/posts');
+            return redirect('/dashboard');
         }
 
         return redirect()
